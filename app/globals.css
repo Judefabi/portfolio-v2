@@ -3,14 +3,22 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #0c1012;
+  --foreground: #121b1c;
+  --primary: #ffffff;
+  --secondary: #8df0cc;
+  --tertiary: #2a2d2f;
+  --muted: #4e907f;
+  --accent: #8df0cc;
+  --spotlight: 141, 240, 204;
+  --destructive: #ff0000;
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #0c1012;
     --foreground: #ededed;
+    --spotlight: 141, 240, 204;
   }
 }
 
@@ -18,4 +26,9 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Add dimmed effect for spotlight */
+.dimmed {
+  background-color: #0c1012;
 }
