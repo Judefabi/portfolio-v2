@@ -4,8 +4,8 @@
 
 :root {
   --background: #0c1012;
-  --foreground: #121b1c;
-  --primary: #ffffff;
+  --primary: #121b1c;
+  --foreground: #ffffff;
   --secondary: #8df0cc;
   --tertiary: #2a2d2f;
   --muted: #4e907f;
@@ -31,4 +31,8 @@ body {
 /* Add dimmed effect for spotlight */
 .dimmed {
   background-color: #0c1012;
+}
+
+/* Reusable section styling */
+@layer components {
 }
