@@ -36,3 +36,7 @@ body {
 /* Reusable section styling */
 @layer components {
 }
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
