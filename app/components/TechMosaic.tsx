@@ -11,6 +11,7 @@ export default function TechMosaic({ techSkills }: TechMosaicProps) {
   const [rightColumn, setRightColumn] = useState<string[]>([]);
   // Create random seeds for consistent size rendering
   const [randomSeeds, setRandomSeeds] = useState<number[]>([]);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   useEffect(() => {
     // Split skills into two columns
@@ -50,13 +51,21 @@ export default function TechMosaic({ techSkills }: TechMosaicProps) {
           const heightClass = randomSeeds[seedIndex]
             ? getSizeClass(randomSeeds[seedIndex])
             : "h-24";
+          const actualIndex = index * 2;
+          const isHovered = hoveredIndex === actualIndex;
+          const isAnyHovered = hoveredIndex !== null;
+          const dimmed = isAnyHovered && !isHovered;
 
           return (
             <div
               key={`left-${index}`}
               className="transform-gpu overflow-visible">
               <div
-                className={`${heightClass} bg-primary shadow-md p-4 hover:bg-primary/80 hover:scale-110 transition-all duration-300 cursor-pointer hover:z-20 relative hover:shadow-xl`}>
+                onMouseEnter={() => setHoveredIndex(actualIndex)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className={`${heightClass} bg-primary shadow-md p-4 hover:bg-primary/80 hover:scale-110 transition-all duration-300 cursor-pointer hover:z-20 relative hover:shadow-xl ${
+                  dimmed ? "opacity-30" : ""
+                } ${isHovered ? "ring-2 ring-accent/80 brightness-125" : ""}`}>
                 <p className="">{skill}</p>
               </div>
             </div>
@@ -71,13 +80,21 @@ export default function TechMosaic({ techSkills }: TechMosaicProps) {
           const heightClass = randomSeeds[seedIndex]
             ? getSizeClass(randomSeeds[seedIndex])
             : "h-36";
+          const actualIndex = index * 2 + 1;
+          const isHovered = hoveredIndex === actualIndex;
+          const isAnyHovered = hoveredIndex !== null;
+          const dimmed = isAnyHovered && !isHovered;
 
           return (
             <div
               key={`right-${index}`}
               className="transform-gpu overflow-visible">
               <div
-                className={`${heightClass} bg-primary shadow-md p-4 rounded-md hover:bg-primary/80 hover:scale-110 transition-all duration-300 cursor-pointer hover:z-20 relative hover:shadow-xl`}>
+                onMouseEnter={() => setHoveredIndex(actualIndex)}
+                onMouseLeave={() => setHoveredIndex(null)}
+                className={`${heightClass} bg-primary shadow-md p-4 rounded-md hover:bg-primary/80 hover:scale-110 transition-all duration-300 cursor-pointer hover:z-20 relative hover:shadow-xl ${
+                  dimmed ? "opacity-30" : ""
+                } ${isHovered ? "ring-2 ring-accent/80 brightness-125" : ""}`}>
                 <p className="">{skill}</p>
               </div>
             </div>
